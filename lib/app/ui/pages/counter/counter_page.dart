@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/ui.dart';
 import 'package:meedu_example/app/ui/pages/counter/controller/counter_provider.dart';
 
 class CounterPage extends StatelessWidget {
@@ -8,9 +9,14 @@ class CounterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          "0",
-          style: TextStyle(fontSize: 30),
+        child: Consumer( //este consumer sirve para hacer los cambios solo en el widget
+          builder: (_, ref, __) { 
+            final c = ref.watch(counterProvider); //watch ve los cambios y los pasa al text
+            return Text(
+              "${c.counter}",
+              style: TextStyle(fontSize: 30),
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(

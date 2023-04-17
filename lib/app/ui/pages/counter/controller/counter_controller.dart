@@ -9,6 +9,6 @@ class CounterController extends SimpleNotifier {
 
   void increment() {
     counter++;
-    notify();
+    notify(); // con nofity podemos notificar a las partes involucradas del cambio de estado
   }
 }
